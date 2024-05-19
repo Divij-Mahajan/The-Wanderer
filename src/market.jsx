@@ -1,8 +1,9 @@
 import Header from "./components/Header/Header";
 
-function Game() {
+function Market() {
     return <div>
         <Header />
+        Market
     </div>
 }
-export default Game;
+export default Market;
