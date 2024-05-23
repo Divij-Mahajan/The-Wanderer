@@ -1,0 +1,7 @@
+.pillar-image-filled {
+    filter: brightness(1.15);
+}
+
+.pillar-image-unfilled {
+    filter: brightness(0.7);
+}
