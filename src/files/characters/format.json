@@ -1,0 +1,33 @@
+{
+    "name": "The Merchant",
+    "location": "Storm's Gate",
+    "text": "The local marketplace is under attack by a group of people, will you help fight them off?",
+    "yes": [
+        0.2,
+        -0.3,
+        0.1,
+        -0.3
+    ],
+    "no": [
+        0.2,
+        -0.3,
+        0.1,
+        -0.3
+    ],
+    "yesItems": [
+        1,
+        0,
+        1,
+        0
+    ],
+    "noItems": [
+        0,
+        1,
+        0,
+        -1
+    ],
+    "swap": "Red Woods|None",
+    "mode": "chain|random",
+    "yesNext": [],
+    "noNext": []
+}

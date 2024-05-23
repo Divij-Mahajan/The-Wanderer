@@ -6,7 +6,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --primary-dark: #272621;
-  --primary-light: #4E4D4A;
+  --primary-light: #4D4A40;
 
   --utility: #BFBFBF;
 
@@ -14,12 +14,30 @@
   --secondary-mid: #CBB155;
   --secondary-light: #D3C491;
 
-  --green: #719E62;
-  --yellow: #CBB155;
-  --red: #903C3C;
-  --blue: #4B5A76;
+  --green: #4a6d3e;
+  --yellow: #af9d5b;
+  --red: #783a3a;
+  --blue: #384e75;
 
   color: rgba(255, 255, 255, 0.87);
   background-color: var(--primary-dark);
+  height: 100%;
+  width: 100%;
 
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  background-color: var(--primary-dark);
+  color: white;
+  padding: 15px 2rem;
 }

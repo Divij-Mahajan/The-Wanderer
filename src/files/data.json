@@ -1,0 +1,20 @@
+{
+    "name": "",
+    "start": "Aeros",
+    "current": "Storm's Gate",
+    "cards": 2,
+    "battles": 34,
+    "wins": 2,
+    "pillars": [
+        0.5,
+        0.5,
+        1.0,
+        0.5
+    ],
+    "items": [
+        0,
+        0,
+        0,
+        0
+    ]
+}
