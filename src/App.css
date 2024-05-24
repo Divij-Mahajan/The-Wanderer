@@ -1,4 +1,16 @@
-.pillar-image-filled {
+.pillar-image-filled-crown {
+    filter: brightness(1.15);
+}
+
+.pillar-image-filled-community {
+    filter: brightness(1.15);
+}
+
+.pillar-image-filled-skill {
+    filter: brightness(1.15);
+}
+
+.pillar-image-filled-health {
     filter: brightness(1.15);
 }
 

@@ -7,8 +7,9 @@ import Items from "./components/game/items";
 function Game() {
     let user = {
         "name": "Dario Naharis",
+        "coins": 0,
         "start": "Aeros",
-        "current": "Storm's Gate",
+        "current": "Aeros",
         "cards": 2,
         "battles": 34,
         "wins": 2,
@@ -28,9 +29,9 @@ function Game() {
     return <div className="h-full scroll overflow-hidden">
         <Header />
         <div className="flex bg-[--primary-light] rounded-3xl m-10 mt-24  mx-16 h-5/6">
-            <Card />
+            <Card user={user} />
             <div className="h-full w-3/5">
-                <Pillars />
+                <Pillars pillars={user.pillars} />
                 <div className="w-full h-full flex">
                     <Items />
                     <About user={user} />

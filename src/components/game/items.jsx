@@ -8,7 +8,7 @@ function Items() {
         <div className="text-[--secondary-light] text-3xl">Items</div>
         <div className="w-full h-2/5 items-center justify-center flex" >
             <div className="flex flex-col h-full w-1/2 items-center justify-center">
-                <img src={shield} style={{ height: "60%", width: "45%" }}></img>
+                <img src={shield} style={{ height: "60%", width: "45%" }} className="filter:brightn"></img>
                 <div>Sheild</div>
             </div>
             <div className="flex flex-col h-full w-1/2 items-center justify-center">

@@ -1,7 +1,8 @@
 {
-    "name": "The Merchant",
-    "location": "Storm's Gate",
-    "text": "The local marketplace is under attack by a group of people, will you help fight them off?",
+    "id": 1001,
+    "cid": 1,
+    "text": "Greetings, welcome to city of Aeros. Here's a small gift on your journey. Will you accept it?",
+    "coins": 0,
     "yes": [
         0.2,
         -0.3,
@@ -26,8 +27,8 @@
         0,
         -1
     ],
-    "swap": "Red Woods|None",
-    "mode": "chain|random",
+    "yesSwap": "Red Woods|None",
+    "noSwap": "Red Woods|None",
     "yesNext": [],
     "noNext": []
 }
