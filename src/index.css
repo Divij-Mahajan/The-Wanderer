@@ -11,7 +11,7 @@
   --utility: #BFBFBF;
 
   --secondary-dark: #C7A21D;
-  --secondary-mid: #CBB155;
+  --secondary-mid: #b8a356;
   --secondary-light: #D3C491;
 
   --green: #3d5634;
@@ -43,5 +43,6 @@ button {
 }
 
 button:hover {
-  color: var(--primary-light);
+  color: var(--secondary-light);
+
 }

@@ -1,19 +1,47 @@
-function Card({ user }) {
-    let card = {
-        "id": 1001,
-        "name": "The King",
-        "image": "/characters/Aeros/King.png",
-        "text": "Greetings, welcome to city of Aeros. Here's a small gift on your journey. Will you accept it?",
-        "coins": 0,
-        "yes": [0.2, -0.3, 0.1, -0.3],
-        "no": [0.2, -0.3, 0.1, -0.3],
-        "yesItems": [1, 0, 1, 0],
-        "noItems": [0, 1, 0, -1],
-        "yesSwap": "Red Woods|None",
-        "noSwap": "Red Woods|None",
-        "yesNext": [],
-        "noNext": []
+import { useState } from "react";
+
+
+function Card({ user, setPillars }) {
+
+    let domain = JSON.parse(localStorage.getItem("domain"));
+    let discarded = JSON.parse(localStorage.getItem("discarded"));
+
+
+    const [card, setCard] = useState({
+        "index": 0,
+        "cid": 0,
+        "text": "Greetings, traveler! Welcome to our fair city of Aeros. As a token of our hospitality, here's a small gift to aid you on your journey. Will you accept it?",
+        "choices": ["yes", "no"],
+        "yes": {
+            "coins": 20,
+            "pillars": [0, 0, 0, 0.1],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [1],
+            "discard": []
+        },
+        "no": {
+            "coins": 0,
+            "pillars": [0, 0, 0, -0.1],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [2],
+            "discard": []
+        }
     }
+    )
+
+
+
+    const [data, setData] = useState({})
+    import(`./../../files/data/${user.current}/characters.json`).then(
+        (d) => {
+
+            setData(d.default[card.cid])
+        }
+    )
+
+    // 6 7 8
     let conv = {
         "Storm's Gate": "bg-[--blue]",
         "Aeros": "bg-[--green]",
@@ -22,18 +50,111 @@ function Card({ user }) {
         "Red Woods": "bg-[--yellow]",
         "The Ridge": "bg-[--yellow]",
     }
-    console.log(`bg-[${conv[card.location]}]`)
+
     return <div className="h-full w-2/5 p-10 pl-16 border-r-2 border-[#ffffff0f]">
-        <div className="rounded-t-lg px-5 pt-2 bg-[--primary-dark] w-5/6 text-[--secondary-light] text-3xl">{card.name}</div>
+        <div className="rounded-t-lg px-5 pt-2 bg-[--primary-dark] w-5/6 text-[--secondary-light] text-3xl">{data.name}</div>
         <div className="px-5 bg-[--primary-dark] w-5/6  text-[--primary-light] text-2xl">{user.current}</div>
         <div className={"rounded-b-lg w-5/6 h-5/6 flex flex-col justify-between border-[--primary-dark]  border-2 " + conv[user.current]} >
             <div className="w-full h-5/6 flex flex-col justify-between items-center pt-6">
                 <div className="overflow-y-scroll bg-[#ffffff11] w-5/6 rounded-lg p-4 border-white border">{card.text}</div>
-                <img src={card.image} className="w-2/5" ></img>
+                <img src={data.image} className="w-2/5" ></img>
             </div>
             <div className="flex h-1/6 justify-around w-full  bg-[--primary-light] border-[--primary-dark] border-2">
-                <button className="w-1/2 text-xl">Yes</button>
-                <button className="w-1/2 text-xl">No</button>
+                <button onClick={() => {
+                    let choiceData = card[card.choices[0]];
+                    for (let i = 0; i < choiceData.discarded; i++) {
+                        const index = domain[user.current].indexOf(choiceData.discarded[i]);
+                        if (index > -1) {
+                            domain[user.current].splice(index, 1);
+                            if (!discarded[user.current].includes(choiceData.discarded[i])) {
+                                discarded[user.current].push(choiceData.discarded[i])
+                            }
+                        }
+                    }
+
+                    localStorage.setItem("domain", JSON.stringify(domain))
+                    localStorage.setItem("discarded", JSON.stringify(discarded))
+                    if (choiceData.next.length == 0) {
+                        let i = domain[user.current][Math.floor((Math.random() * domain[user.current].length))]
+                        import(`./../../files/data/${user.current}/cards.json`).then(
+                            (d) => {
+                                setCard(d.default[i])
+                                console.log(i, d.default[i])
+                            }
+                        )
+                    } else {
+                        let i = choiceData.next[Math.floor((Math.random() * choiceData.next.length))]
+                        import(`./../../files/data/${user.current}/cards.json`).then(
+                            (d) => {
+                                setCard(d.default[i])
+                            }
+                        )
+                    }
+                    localStorage.setItem("coins", JSON.stringify(user.coins + choiceData.coins))
+                    setPillars((p) => {
+                        let pNew = []
+                        for (let i = 0; i < p.length; i++) {
+                            let temp = p[i] + choiceData.pillars[i];
+                            if (temp > 1) {
+                                pNew.push(1)
+                            } else if (temp < 0) {
+                                pNew.push(0)
+                            } else {
+                                pNew.push(temp)
+                            }
+                        }
+                        localStorage.setItem("pillars", JSON.stringify(pNew))
+                        return pNew
+                    })
+                }} className="w-1/2 text-xl">{card.choices[0]}</button>
+                <button onClick={() => {
+                    let choiceData = card[card.choices[1]];
+                    for (let i = 0; i < choiceData.discarded; i++) {
+                        const index = domain[user.current].indexOf(choiceData.discarded[i]);
+                        if (index > -1) {
+                            domain[user.current].splice(index, 1);
+                            if (!discarded[user.current].includes(choiceData.discarded[i])) {
+                                discarded[user.current].push(choiceData.discarded[i])
+                            }
+                        }
+                    }
+
+                    localStorage.setItem("domain", JSON.stringify(domain))
+                    localStorage.setItem("discarded", JSON.stringify(discarded))
+                    if (choiceData.next.length == 0) {
+                        let i = domain[user.current][Math.floor((Math.random() * domain[user.current].length))]
+                        import(`./../../files/data/${user.current}/cards.json`).then(
+                            (d) => {
+                                setCard(d.default[i])
+                                console.log(i, d.default[i])
+                            }
+                        )
+                    } else {
+                        let i = choiceData.next[Math.floor((Math.random() * choiceData.next.length))]
+                        import(`./../../files/data/${user.current}/cards.json`).then(
+                            (d) => {
+                                setCard(d.default[i])
+                            }
+                        )
+                    }
+                    localStorage.setItem("coins", JSON.stringify(user.coins + choiceData.coins))
+                    setPillars((p) => {
+                        let pNew = []
+                        for (let i = 0; i < p.length; i++) {
+                            let temp = p[i] + choiceData.pillars[i];
+                            if (temp > 1) {
+                                pNew.push(1)
+                            } else if (temp < 0) {
+                                pNew.push(0)
+                            } else {
+                                pNew.push(temp)
+                            }
+                        }
+                        localStorage.setItem("pillars", JSON.stringify(pNew))
+                        return pNew
+                    })
+
+                }} className="w-1/2 text-xl">{card.choices[1]}</button>
             </div>
         </div>
 

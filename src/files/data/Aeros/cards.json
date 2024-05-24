@@ -1,0 +1,192 @@
+[
+    {
+        "index":0,
+        "cid": 0,
+        "text": "Our city's granary is running low on supplies. Would you be willing to travel to the neighboring village and negotiate a trade agreement for us?",
+        "choices":["Yes","No"],
+        "Yes": {
+            "coins": 5,
+            "pillars": [0.2, 0, 0, 0.1],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [0]
+        },
+        "No": {
+            "coins": 0,
+            "pillars": [0, 0, 0, -0.15],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [0]
+        }
+    },
+    {
+        "index":1,
+        "cid": 1,
+        "text": "We're organizing a festival in the city square and could use some extra hands to help with the preparations. Would you lend us your assistance?",
+        "choices":["Yes","No"],
+        "Yes": {
+            "coins": 3,
+            "pillars": [0.05, 0, 0, 0.05],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [1]
+        },
+        "No": {
+            "coins": 0,
+            "pillars": [-0.1, 0, 0, -0.05],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [1]
+        }
+    },
+    {
+        "index":2,
+        "cid": 2,
+        "text": "I've been assigned to patrol the outskirts of the city, but I'm in need of assistance. Would you accompany me on my rounds?",
+        "choices":["Yes","No"],
+        "Yes": {
+            "coins": 0,
+            "pillars": [0, 0.1, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [2]
+        },
+        "No": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [2]
+        }
+    },
+    {
+        "index":3,
+        "cid": 0,
+        "text": "We've received reports of bandit activity on the roads leading to Aeros. Would you be willing to join a patrol to ensure the safety of travelers?",
+        "choices":["Yes","No"],
+        "Yes": {
+            "coins": 0,
+            "pillars": [0.15, 0, -0.1, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [3]
+        },
+        "No": {
+            "coins": 0,
+            "pillars": [-0.15, 0, 0.1, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [3]
+        }
+    },
+    {
+        "index":4,
+        "cid": 1,
+        "text": "Greetings! The city's library is in need of organization. Would you be willing to help sort and catalogue the books?",
+        "choices":["Yes","No"],
+        "Yes": {
+            "coins": 0,
+            "pillars": [0.05, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [4]
+        },
+        "No": {
+            "coins": 0,
+            "pillars": [-0.05, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [4]
+        }
+    },
+    {
+        "index": 5,
+        "cid": 0,
+        "text": "Greetings! As the ruler of Aeros, I extend an invitation to participate in our city's grand tournament. Would you honor us with your presence?",
+        "choices":["Yes","No"],
+        "Yes": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [6],
+            "discard": []
+        },
+        "No": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [5]
+        }
+    },
+    {
+        "index": 6,
+        "cid": 3,
+        "text": "Welcome, challenger! I am the mighty swordsman of Aeros. Shall we begin our duel?",
+        "choices":["Attack","Defend"],
+        "Attack": {
+            "coins": 0,
+            "pillars": [0.1, 0.1, -0.2, 0.1],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [7],
+            "discard": []
+        },
+        "Defend": {
+            "coins": 0,
+            "pillars": [-0.05, 0,-0.05, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [6],
+            "discard": []
+        }
+    },
+    {
+        "index": 7,
+        "cid": 4,
+        "text": "Greetings, challenger! I am the skilled archer of Aeros.",
+        "choices":["Attack","Defend"],
+        "Attack": {
+            "coins": 0,
+            "pillars": [0.2, 0.2, -0.25, 0.15],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [8],
+            "discard": []
+        },
+        "Defend": {
+            "coins": 0,
+            "pillars": [-0.05, 0, -0.2, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [7],
+            "discard": []
+        }
+    },
+    {
+        "index": 8,
+        "cid": 0,
+        "text": "Congratulations on your victory in the tournament! As a token of appreciation, here are 20 coins.",
+        "choices":["thanks","thanks"],
+        "thanks": {
+            "coins": 20,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discard": [5]
+        }
+    }
+]
