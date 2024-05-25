@@ -9,9 +9,9 @@ function Game() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || {})
     const [pillars, setPillars] = useState(JSON.parse(localStorage.getItem("pillars")) || [0, 0, 0, 0])
     return <div className="h-full scroll overflow-hidden">
-        <Header />
+        <Header user={user} />
         <div className="flex bg-[--primary-light] rounded-3xl m-10 mt-24  mx-16 h-5/6">
-            <Card user={user} setPillars={setPillars} />
+            <Card user={user} setPillars={setPillars} setUser={setUser} />
             <div className="h-full w-3/5">
                 <Pillars pillars={pillars} />
                 <div className="w-full h-full flex">

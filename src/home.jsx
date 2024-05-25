@@ -35,6 +35,7 @@ function Home() {
                 "Red Woods": [],
                 "The Ridge": [],
             }))
+            localStorage.setItem("last", JSON.stringify(-1))
 
             localStorage.setItem("discarded", JSON.stringify({
                 "Storm's Gate": [],

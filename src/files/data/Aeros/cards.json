@@ -10,7 +10,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [0]
+            "discarded": [0]
         },
         "No": {
             "coins": 0,
@@ -18,7 +18,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [0]
+            "discarded": [0]
         }
     },
     {
@@ -32,7 +32,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [1]
+            "discarded": [1]
         },
         "No": {
             "coins": 0,
@@ -40,7 +40,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [1]
+            "discarded": [1]
         }
     },
     {
@@ -54,7 +54,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [2]
+            "discarded": [2]
         },
         "No": {
             "coins": 0,
@@ -62,7 +62,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [2]
+            "discarded": [2]
         }
     },
     {
@@ -76,7 +76,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [3]
+            "discarded": [3]
         },
         "No": {
             "coins": 0,
@@ -84,7 +84,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [3]
+            "discarded": [3]
         }
     },
     {
@@ -98,7 +98,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [4]
+            "discarded": [4]
         },
         "No": {
             "coins": 0,
@@ -106,7 +106,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [4]
+            "discarded": [4]
         }
     },
     {
@@ -120,7 +120,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [6],
-            "discard": []
+            "discarded": []
         },
         "No": {
             "coins": 0,
@@ -128,7 +128,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [5]
+            "discarded": [5]
         }
     },
     {
@@ -142,7 +142,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [7],
-            "discard": []
+            "discarded": []
         },
         "Defend": {
             "coins": 0,
@@ -150,7 +150,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [6],
-            "discard": []
+            "discarded": []
         }
     },
     {
@@ -164,7 +164,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [8],
-            "discard": []
+            "discarded": []
         },
         "Defend": {
             "coins": 0,
@@ -172,7 +172,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [7],
-            "discard": []
+            "discarded": []
         }
     },
     {
@@ -186,7 +186,7 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discard": [5]
+            "discarded": [5]
         }
     }
 ]
