@@ -18,5 +18,9 @@
     {
         "name": "Archer",
         "image": "/characters/General/Bow1.png"
+    },
+    {
+        "name": "Merchant",
+        "image": "/characters/General/Male.png"
     }
 ]

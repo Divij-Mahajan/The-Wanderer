@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function Card({ user, setPillars, setUser }) {
+function Card({ user, setPillars, setUser, setItems }) {
 
     let domain = JSON.parse(localStorage.getItem("domain"));
     let discarded = JSON.parse(localStorage.getItem("discarded"));
@@ -15,7 +15,8 @@ function Card({ user, setPillars, setUser }) {
         "The people lost all the trust in you and decided to lynch you off and hang you publically.",
         "Due to lack of any practise your skillset got extremly poor and made you a weak target of other Wanderers, who decided to elimate you to reduce their competition.",
         "All the battles and attacks made you extremly weak, you ended up passing away due to extremly poor health.",
-        "The crown got impatient with your works, he started considering you as more of a burden and decided to get your executed by his assassins."
+        "The crown got impatient with your works, he started considering you as more of a burden and decided to get your executed by his assassins.",
+        "Your ever increasing debt made the king unhappy, who decided to get you executed by his assassins."
     ]
 
     let lost = {
@@ -29,7 +30,8 @@ function Card({ user, setPillars, setUser }) {
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": []
+            "discarded": [],
+            "domain": []
         },
         "Return": {
             "coins": 0,
@@ -37,7 +39,8 @@ function Card({ user, setPillars, setUser }) {
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": []
+            "discarded": [],
+            "domain": []
         }
     }
 
@@ -53,7 +56,8 @@ function Card({ user, setPillars, setUser }) {
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [1],
-            "discarded": []
+            "discarded": [],
+            "domain": []
         },
         "No": {
             "coins": 0,
@@ -61,7 +65,8 @@ function Card({ user, setPillars, setUser }) {
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [2],
-            "discarded": []
+            "discarded": [],
+            "domain": []
         }
     }
     )
@@ -102,6 +107,18 @@ function Card({ user, setPillars, setUser }) {
             navigate("/")
             return;
         }
+        if (user.coins < -100) {
+            lost.text = lostText[4]
+            setCard(lost)
+            let d = {
+                name: "You lost",
+                image: "/characters/General/Death2.png"
+            }
+            setData(d)
+            setLostBool(true)
+            return;
+
+        }
         let z = false
         setPillars((p) => {
             let pNew = []
@@ -131,6 +148,19 @@ function Card({ user, setPillars, setUser }) {
             localStorage.setItem("pillars", JSON.stringify(pNew))
             return pNew
         })
+        setItems((it) => {
+            let iNew = []
+            for (let i = 0; i < it.length; i++) {
+                let temp = it[i] + choiceData.items[i];
+                if (temp < 0) {
+                    iNew.push(0)
+                } else {
+                    iNew.push(temp)
+                }
+            }
+            localStorage.setItem("items", JSON.stringify(iNew))
+            return iNew
+        })
         if (z) {
             return;
         }
@@ -144,13 +174,14 @@ function Card({ user, setPillars, setUser }) {
                         discarded[user.current].push(choiceData.discarded[i])
                     }
                 }
-                console.log(domain[user.current])
-                console.log(discarded[user.current])
             }
         } else {
-            console.log("here")
             domain[user.current] = discarded[user.current]
             discarded[user.current] = []
+        }
+
+        if (choiceData.domain.length != 0) {
+            domain[user.current] = domain[user.current].concat(choiceData.domain)
         }
 
         localStorage.setItem("domain", JSON.stringify(domain))

@@ -17,3 +17,11 @@
 .pillar-image-unfilled {
     filter: brightness(0.7);
 }
+
+.itemsoff {
+    filter: brightness(0);
+}
+
+.itemson {
+    filter: brightness(1);
+}

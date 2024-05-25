@@ -22,8 +22,9 @@ function Home() {
             localStorage.setItem("pillars", JSON.stringify([0.5, 0.5, 1.0, 0.5]))
             localStorage.setItem("items", JSON.stringify([0, 0, 0, 0]))
             let l = []
-            for (let i = 0; i < 9; i++) {
-                if (![6, 7, 8].includes(i)) {
+            let count = 13
+            for (let i = 0; i <= count; i++) {
+                if (![6, 7, 8, 10, 11, 12, 13].includes(i)) {
                     l.push(i)
                 }
             }

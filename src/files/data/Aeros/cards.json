@@ -10,7 +10,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [0]
+            "discarded": [0],
+            "domain":[]
         },
         "No": {
             "coins": 0,
@@ -18,7 +19,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [0]
+            "discarded": [0],
+            "domain":[]
         }
     },
     {
@@ -32,7 +34,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [1]
+            "discarded": [1],
+            "domain":[]
         },
         "No": {
             "coins": 0,
@@ -40,7 +43,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [1]
+            "discarded": [1],
+            "domain":[]
         }
     },
     {
@@ -54,7 +58,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [2]
+            "discarded": [2],
+            "domain":[]
         },
         "No": {
             "coins": 0,
@@ -62,7 +67,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [2]
+            "discarded": [2],
+            "domain":[]
         }
     },
     {
@@ -76,7 +82,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [3]
+            "discarded": [3],
+            "domain":[]
         },
         "No": {
             "coins": 0,
@@ -84,7 +91,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [3]
+            "discarded": [3],
+            "domain":[]
         }
     },
     {
@@ -98,7 +106,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [4]
+            "discarded": [4],
+            "domain":[]
         },
         "No": {
             "coins": 0,
@@ -106,7 +115,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [4]
+            "discarded": [4],
+            "domain":[]
         }
     },
     {
@@ -120,7 +130,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [6],
-            "discarded": []
+            "discarded": [],
+            "domain":[]
         },
         "No": {
             "coins": 0,
@@ -128,7 +139,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [5]
+            "discarded": [5],
+            "domain":[]
         }
     },
     {
@@ -142,7 +154,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [7],
-            "discarded": []
+            "discarded": [],
+            "domain":[]
         },
         "Defend": {
             "coins": 0,
@@ -150,7 +163,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [6],
-            "discarded": []
+            "discarded": [],
+            "domain":[]
         }
     },
     {
@@ -164,7 +178,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [8],
-            "discarded": []
+            "discarded": [],
+            "domain":[]
         },
         "Defend": {
             "coins": 0,
@@ -172,7 +187,8 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [7],
-            "discarded": []
+            "discarded": [],
+            "domain":[]
         }
     },
     {
@@ -186,7 +202,119 @@
             "items": [0, 0, 0, 0],
             "swap": "None",
             "next": [],
-            "discarded": [5]
+            "discarded": [5],
+            "domain":[]
+        }
+    },
+    {
+        "index": 9,
+        "cid": 5,
+        "text": "Greetings, traveler! I am a humble merchant with wares from distant lands. Would you like to browse my collection?",
+        "choices": ["yes", "no"],
+        "yes": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [12],
+            "discarded": [9],
+            "domain":[10,11,12,13]
+        },
+        "no": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [11],
+            "discarded": [9],
+            "domain":[10,11,12,13]
+        }
+    },
+    {
+        "index": 10,
+        "cid": 5,
+        "text": "I see well then, come back some other time.",
+        "choices": ["Okay", "Okay"],
+        "Okay": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [10],
+            "domain":[]
+        }
+    },
+    {
+        "index": 11,
+        "cid": 5,
+        "text": "I have a fine selection of potions and trinkets. Would you like to buy a health potion for 10 coins?",
+        "choices": ["yes", "no"],
+        "yes": {
+            "coins": -10,
+            "pillars": [0, 0, 0.15, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [11],
+            "domain":[]
+        },
+        "no": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [11],
+            "domain":[]
+        }
+    },
+    {
+        "index": 12,
+        "cid": 5,
+        "text": "I see you have an eye for quality. How about a sturdy shield for 35 coins?",
+        "choices": ["yes", "no"],
+        "yes": {
+            "coins": -35,
+            "pillars": [0, 0, 0, 0],
+            "items": [1, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [12],
+            "domain":[]
+        },
+        "no": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [12],
+            "domain":[]
+        }
+    },
+    {
+        "index": 13,
+        "cid": 5,
+        "text": "I think I may have the right thing for you how about a powerful sword for 40 coins?",
+        "choices": ["yes", "no"],
+        "yes": {
+            "coins": -40,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 1, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [13],
+            "domain":[]
+        },
+        "no": {
+            "coins": 0,
+            "pillars": [0, 0, 0, 0],
+            "items": [0, 0, 0, 0],
+            "swap": "None",
+            "next": [],
+            "discarded": [13],
+            "domain":[]
         }
     }
 ]
