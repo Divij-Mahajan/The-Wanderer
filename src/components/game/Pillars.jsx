@@ -10,7 +10,6 @@ gsap.registerPlugin(useGSAP);
 
 function Pillars({ pillars }) {
     const container = useRef();
-    console.log(pillars)
     const { contextSafe } = useGSAP(() => { }, { scope: container });
 
     let pillarsUpdate = contextSafe(() => {

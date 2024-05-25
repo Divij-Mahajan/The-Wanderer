@@ -96,6 +96,93 @@ function Card({ user, setPillars, setUser }) {
         "Red Woods": "bg-[--yellow]",
         "The Ridge": "bg-[--yellow]",
     }
+    function handler(i) {
+        let choiceData = card[card.choices[i]];
+        if (lostBool) {
+            navigate("/")
+            return;
+        }
+        let z = false
+        setPillars((p) => {
+            let pNew = []
+            let l = -1
+            for (let i = 0; i < p.length; i++) {
+                let temp = p[i] + choiceData.pillars[i];
+                if (temp > 1) {
+                    pNew.push(1)
+                } else if (temp < 0) {
+                    l = i;
+                    pNew.push(0)
+                } else {
+                    pNew.push(temp)
+                }
+            }
+            if (l != -1) {
+                lost.text = lostText[l]
+                setCard(lost)
+                z = true
+                let d = {
+                    name: "You lost",
+                    image: "/characters/General/" + (l == 0 ? "Death1" : (l == 2 ? "Male" : "Death2")) + ".png"
+                }
+                setData(d)
+                setLostBool(true)
+            }
+            localStorage.setItem("pillars", JSON.stringify(pNew))
+            return pNew
+        })
+        if (z) {
+            return;
+        }
+        setSettled(true)
+        if (domain[user.current].length != 1) {
+            for (let i = 0; i < choiceData.discarded.length; i++) {
+                const index = domain[user.current].indexOf(choiceData.discarded[i]);
+                if (index > -1) {
+                    domain[user.current].splice(index, 1);
+                    if (!discarded[user.current].includes(choiceData.discarded[i])) {
+                        discarded[user.current].push(choiceData.discarded[i])
+                    }
+                }
+                console.log(domain[user.current])
+                console.log(discarded[user.current])
+            }
+        } else {
+            console.log("here")
+            domain[user.current] = discarded[user.current]
+            discarded[user.current] = []
+        }
+
+        localStorage.setItem("domain", JSON.stringify(domain))
+        localStorage.setItem("discarded", JSON.stringify(discarded))
+
+        if (choiceData.next.length == 0) {
+            let i = domain[user.current][Math.floor((Math.random() * domain[user.current].length))]
+            import(`./../../files/data/${user.current}/cards.json`).then(
+                (d) => {
+                    if (i) {
+                        setCard(d.default[i])
+                        localStorage.setItem("last", JSON.stringify(i))
+                    }
+                }
+            )
+        } else {
+            let i = choiceData.next[Math.floor((Math.random() * choiceData.next.length))]
+            import(`./../../files/data/${user.current}/cards.json`).then(
+                (d) => {
+                    if (i) {
+                        setCard(d.default[i])
+                        localStorage.setItem("last", JSON.stringify(i))
+                    }
+                }
+            )
+        }
+        user.coins += choiceData.coins
+        user.cards += 1
+        localStorage.setItem("user", JSON.stringify(user))
+        setUser(user)
+
+    }
 
     return <div className="h-full w-2/5 p-10 pl-16 border-r-2 border-[#ffffff0f]">
         <div className="rounded-t-lg px-5 pt-2 bg-[--primary-dark] w-5/6 text-[--secondary-light] text-3xl">{data.name}</div>
@@ -107,156 +194,11 @@ function Card({ user, setPillars, setUser }) {
             </div>
             <div className="flex h-1/6 justify-around w-full  bg-[--primary-light] border-[--primary-dark] border-2">
                 <button onClick={() => {
-                    let choiceData = card[card.choices[0]];
-                    if (lostBool) {
-                        navigate("/")
-                        return;
-                    }
-                    let z = false
-                    setPillars((p) => {
-                        let pNew = []
-                        let l = -1
-                        for (let i = 0; i < p.length; i++) {
-                            let temp = p[i] + choiceData.pillars[i];
-                            if (temp > 1) {
-                                pNew.push(1)
-                            } else if (temp < 0) {
-                                l = i;
-                                pNew.push(0)
-                            } else {
-                                pNew.push(temp)
-                            }
-                        }
-                        if (l != -1) {
-                            lost.text = lostText[l]
-                            setCard(lost)
-                            z = true
-                            let d = {
-                                name: "You lost",
-                                image: "/characters/General/" + (l == 0 ? "Death1" : (l == 2 ? "Male" : "Death2")) + ".png"
-                            }
-                            setData(d)
-                            setLostBool(true)
-                        }
-                        localStorage.setItem("pillars", JSON.stringify(pNew))
-                        return pNew
-                    })
-                    if (z) {
-                        return;
-                    }
-                    setSettled(true)
-
-                    for (let i = 0; i < choiceData.discarded.length; i++) {
-                        const index = domain[user.current].indexOf(choiceData.discarded[i]);
-                        console.log(index)
-                        if (index > -1) {
-                            domain[user.current].splice(index, 1);
-                            if (!discarded[user.current].includes(choiceData.discarded[i])) {
-                                discarded[user.current].push(choiceData.discarded[i])
-                            }
-                        }
-                    }
-
-                    localStorage.setItem("domain", JSON.stringify(domain))
-                    localStorage.setItem("discarded", JSON.stringify(discarded))
-
-                    if (choiceData.next.length == 0) {
-                        let i = domain[user.current][Math.floor((Math.random() * domain[user.current].length))]
-                        import(`./../../files/data/${user.current}/cards.json`).then(
-                            (d) => {
-                                setCard(d.default[i])
-                                localStorage.setItem("last", JSON.stringify(i))
-
-                            }
-                        )
-                    } else {
-                        let i = choiceData.next[Math.floor((Math.random() * choiceData.next.length))]
-                        import(`./../../files/data/${user.current}/cards.json`).then(
-                            (d) => {
-                                setCard(d.default[i])
-                                localStorage.setItem("last", JSON.stringify(i))
-                            }
-                        )
-                    }
-                    user.coins += choiceData.coins
-                    user.cards += 1
-                    localStorage.setItem("user", JSON.stringify(user))
-                    setUser(user)
+                    handler(0)
 
                 }} className="w-1/2 text-xl">{card.choices[0]}</button>
                 <button onClick={() => {
-                    let choiceData = card[card.choices[1]];
-                    if (lostBool) {
-                        navigate("/")
-                        return;
-                    }
-                    let z = false
-                    setPillars((p) => {
-                        let pNew = []
-                        let l = -1
-                        for (let i = 0; i < p.length; i++) {
-                            let temp = p[i] + choiceData.pillars[i];
-                            if (temp > 1) {
-                                pNew.push(1)
-                            } else if (temp < 0) {
-                                l = i;
-                                pNew.push(0)
-                            } else {
-                                pNew.push(temp)
-                            }
-                        }
-                        if (l != -1) {
-                            lost.text = lostText[l]
-                            setCard(lost)
-                            z = true
-                            let d = {
-                                name: "You lost",
-                                image: "/characters/General/" + (l == 0 ? "Death1" : (l == 2 ? "Male" : "Death2")) + ".png"
-                            }
-                            setData(d)
-                            setLostBool(true)
-                        }
-                        localStorage.setItem("pillars", JSON.stringify(pNew))
-                        return pNew
-                    })
-                    if (z) {
-                        return;
-                    }
-                    setSettled(true)
-                    for (let i = 0; i < choiceData.discarded; i++) {
-                        const index = domain[user.current].indexOf(choiceData.discarded[i]);
-                        if (index > -1) {
-                            domain[user.current].splice(index, 1);
-                            if (!discarded[user.current].includes(choiceData.discarded[i])) {
-                                discarded[user.current].push(choiceData.discarded[i])
-                            }
-                        }
-                    }
-
-                    localStorage.setItem("domain", JSON.stringify(domain))
-                    localStorage.setItem("discarded", JSON.stringify(discarded))
-                    if (choiceData.next.length == 0) {
-                        let i = domain[user.current][Math.floor((Math.random() * domain[user.current].length))]
-                        import(`./../../files/data/${user.current}/cards.json`).then(
-                            (d) => {
-                                setCard(d.default[i])
-                                localStorage.setItem("last", JSON.stringify(i))
-
-                            }
-                        )
-                    } else {
-                        let i = choiceData.next[Math.floor((Math.random() * choiceData.next.length))]
-                        import(`./../../files/data/${user.current}/cards.json`).then(
-                            (d) => {
-                                setCard(d.default[i])
-                                localStorage.setItem("last", JSON.stringify(i))
-                            }
-                        )
-                    }
-                    user.coins += choiceData.coins
-                    user.cards += 1
-                    localStorage.setItem("user", JSON.stringify(user))
-                    setUser(user)
+                    handler(1)
                 }} className="w-1/2 text-xl">{card.choices[1]}</button>
             </div>
         </div>
