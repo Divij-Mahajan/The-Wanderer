@@ -11,6 +11,11 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@mysten/dapp-kit": "^0.13.2",
+    "@mysten/enoki": "^0.2.8",
+    "@mysten/sui.js": "^0.54.1",
+    "@tanstack/react-query": "^5.39.0",
+    "axios": "^1.7.2",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
