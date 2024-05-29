@@ -62,15 +62,6 @@ function Market() {
             setAuth(true)
         }
     })
-    if (!zkLogin.address) {
-        return <div className="text-4xl h-full w-full flex items-center justify-center">
-            <Header user={user} />
-            <div>
-
-                Loading Please Wait . . .
-            </div>
-        </div>
-    }
 
 
     if (!auth) {
@@ -93,6 +84,7 @@ function Market() {
             </div>
         </div>
     }
+
 
 
     return <div className="h-full w-full">
