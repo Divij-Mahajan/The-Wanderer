@@ -215,7 +215,7 @@ function Card({ user, setPillars, setUser, setItems }) {
 
     }
 
-    return <div className="h-full w-2/5 p-10 pl-16 border-r-2 border-[#ffffff0f]">
+    return <div className="h-full w-full  p-10 pl-16 border-r-2 border-[#ffffff0f]">
         <div className="rounded-t-lg px-5 pt-2 bg-[--primary-dark] w-5/6 text-[--secondary-light] text-3xl">{data.name}</div>
         <div className="px-5 bg-[--primary-dark] w-5/6  text-[--primary-light] text-2xl">{user.current}</div>
         <div className={"rounded-b-lg w-5/6 h-5/6 flex flex-col justify-between border-[--primary-dark]  border-2 " + conv[user.current]} >
