@@ -243,8 +243,7 @@ function Market() {
             setAuth(true)
         }
     })
-    console.log("meta :", import.meta.env.VITE_ENOKI_API_KEY)
-    //console.log("prcoess :", process.env.VITE_ENOKI_API_KEY)
+
     if (!zkLogin.address) {
         return <div>
             <Header user={user} />
