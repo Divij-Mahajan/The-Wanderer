@@ -226,6 +226,7 @@ function Market() {
     const [magicList, setMagicList] = useState([])
 
 
+
     useEffect(() => {
         if (window.location.hash)
             enokiFlow.handleAuthCallback().then(() => {
@@ -265,6 +266,10 @@ function Market() {
     return <div className="h-full w-full">
         <Header user={user} />
         <div className="h-full w-full pt-20">
+            <div className="absolute w-full text-center">
+                Please wait for few seconds after buying or selling, it may take upto a minute to process...
+
+            </div>
             <div className="flex h-1/2 w-full justify-end gap-4 pr-4 items-end mb-4">
                 <div className="flex flex-col justify-start items-center w-1/5 h-full pt-14 text-center">
                     <div className="text-3xl mb-7">Welcome to the marketplace</div>

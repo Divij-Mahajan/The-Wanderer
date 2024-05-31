@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function Card({ user, setPillars, setUser, setItems }) {
+function Card({ user, setPillars, setUser, setItems, items, pillars }) {
 
     let domain = JSON.parse(localStorage.getItem("domain"));
     let discarded = JSON.parse(localStorage.getItem("discarded"));
@@ -10,6 +10,7 @@ function Card({ user, setPillars, setUser, setItems }) {
     const [settled, setSettled] = useState(false)
     const [lostBool, setLostBool] = useState(false)
     const navigate = useNavigate()
+    const [hp, setHp] = useState(JSON.parse(localStorage.getItem("hp")) || 0)
 
     let lostText = [
         "The people lost all the trust in you and decided to lynch you off and hang you publically.",
@@ -102,6 +103,7 @@ function Card({ user, setPillars, setUser, setItems }) {
         "The Ridge": "bg-[--yellow]",
     }
     function handler(i) {
+        let ind = i;
         let choiceData = card[card.choices[i]];
         if (lostBool) {
             navigate("/")
@@ -148,6 +150,7 @@ function Card({ user, setPillars, setUser, setItems }) {
             localStorage.setItem("pillars", JSON.stringify(pNew))
             return pNew
         })
+
         setItems((it) => {
             let iNew = []
             for (let i = 0; i < it.length; i++) {
@@ -186,6 +189,23 @@ function Card({ user, setPillars, setUser, setItems }) {
 
         localStorage.setItem("domain", JSON.stringify(domain))
         localStorage.setItem("discarded", JSON.stringify(discarded))
+        let skip = false
+        if (card.text[0] == ';') {
+            skip = true;
+            let x = hp;
+            console.log(items)
+            x += pillars[1] * (items[ind + 1] + 1) * 10 * Number(card.text.split(";")[3 + ind])
+            setHp(x)
+            localStorage.setItem("hp", JSON.stringify(x))
+            if (hp >= Number(card.text.split(";")[1])) {
+                skip = false;
+            }
+
+        }
+        if (skip) {
+            return;
+        }
+
 
         if (choiceData.next.length == 0) {
             let i = domain[user.current][Math.floor((Math.random() * domain[user.current].length))]
@@ -210,17 +230,26 @@ function Card({ user, setPillars, setUser, setItems }) {
         }
         user.coins += choiceData.coins
         user.cards += 1
+
         localStorage.setItem("user", JSON.stringify(user))
         setUser(user)
+        localStorage.setItem("hp", JSON.stringify(0))
+        setHp(0)
 
     }
+
 
     return <div className="h-full w-full  p-10 pl-16 border-r-2 border-[#ffffff0f]">
         <div className="rounded-t-lg px-5 pt-2 bg-[--primary-dark] w-5/6 text-[--secondary-light] text-3xl">{data.name}</div>
         <div className="px-5 bg-[--primary-dark] w-5/6  text-[--primary-light] text-2xl">{user.current}</div>
         <div className={"rounded-b-lg w-5/6 h-5/6 flex flex-col justify-between border-[--primary-dark]  border-2 " + conv[user.current]} >
             <div className="w-full h-5/6 flex flex-col justify-between items-center pt-6">
-                <div className="overflow-y-scroll bg-[#ffffff11] w-5/6 rounded-lg p-4 border-white border">{card.text}</div>
+                <div className="overflow-y-scroll bg-[#ffffff11] w-5/6 rounded-lg p-4 border-white border">{(card.text[0] == ';') ? <div>
+                    <div className="mb-4">{card.text.split(";")[2]}</div>
+                    <div className="mb-1">Health Points: &nbsp; {card.text.split(";")[1] - hp} / {card.text.split(";")[1]}</div>
+                    <div className="mb-1">Close Attack : &nbsp; {-1000 * card[card.choices[0]].pillars[2]}</div>
+                    <div >Range Attack : &nbsp; {-1000 * card[card.choices[1]].pillars[2]}</div>
+                </div> : card.text}</div>
                 <img src={data.image} className="w-2/5" ></img>
             </div>
             <div className="flex h-1/6 justify-around w-full  bg-[--primary-light] border-[--primary-dark] border-2">

@@ -14,7 +14,7 @@ function Game() {
         <div className="flex bg-[--primary-light] rounded-3xl m-10 mt-24  mx-16 h-5/6 ">
             <div className="h-full w-2/5 relative">
                 {(user.coins < 0) && <div className="absolute top-4 left-1/4">You are in debt to the crown</div>}
-                <Card user={user} setPillars={setPillars} setUser={setUser} setItems={setItems} />
+                <Card user={user} setPillars={setPillars} setUser={setUser} setItems={setItems} items={items} pillars={pillars} />
             </div>
             <div className="h-full w-3/5">
                 <Pillars pillars={pillars} />

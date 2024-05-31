@@ -22,5 +22,9 @@
     {
         "name": "Merchant",
         "image": "/characters/General/Male.png"
+    },
+    {
+        "name": "The Dark Rider",
+        "image": "/characters/Villians/The Dark Rider.png"
     }
 ]
