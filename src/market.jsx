@@ -231,7 +231,10 @@ function Market() {
             enokiFlow.handleAuthCallback().then(() => {
                 window.location = window.location.href.split("#")[0];
             });
-        getAllList(client, setShieldList, setSwordList, setBowList, setMagicList, zkLogin.address, setClaim, pending)
+        if (zkLogin.address) {
+
+            getAllList(client, setShieldList, setSwordList, setBowList, setMagicList, zkLogin.address, setClaim, pending)
+        }
     }, []);
 
     const [auth, setAuth] = useState(false)
@@ -240,7 +243,8 @@ function Market() {
             setAuth(true)
         }
     })
-
+    console.log("meta :", import.meta.env.VITE_ENOKI_API_KEY)
+    //console.log("prcoess :", process.env.VITE_ENOKI_API_KEY)
     if (!zkLogin.address) {
         return <div>
             <Header user={user} />
