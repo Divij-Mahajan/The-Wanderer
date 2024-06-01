@@ -61,7 +61,7 @@ function Home() {
             // }
             navigate("/game")
         }} className="bg-[--secondary-light] mt-8 rounded-2xl text-black hover:text-black mb-2 text-xl hover:bg-[--secondary-mid] ">Start Game</button>
-        <div className="text-[--secondary-light] hover:text-[--secondary-mid]">How to Play?</div>
+        <div onClick={() => navigate("/how")} className="text-[--secondary-light] hover:text-[--secondary-mid] cursor-pointer">How to Play?</div>
     </div>
 }
 export default Home;
