@@ -126,7 +126,7 @@ function Card({ user, setPillars, setUser, setItems, items, pillars }) {
             let pNew = []
             let l = -1
             for (let i = 0; i < p.length; i++) {
-                let temp = p[i] + choiceData.pillars[i];
+                let temp = p[i] + choiceData.pillars[i] * ((card.text[0] == ';' && i == 2) ? (1 / (items[0] + 1)) : 1);
                 if (temp > 1) {
                     pNew.push(1)
                 } else if (temp < 0) {
@@ -195,6 +195,7 @@ function Card({ user, setPillars, setUser, setItems, items, pillars }) {
             let x = hp;
             console.log(items)
             x += pillars[1] * (items[ind + 1] + 1) * 10 * Number(card.text.split(";")[3 + ind])
+            x += pillars[1] * (items[ind + 1] + 1) * 10 * Number(card.text.split(";")[3 + ind]) * card.text.split(";")[5] * (items[3] + 1)
             setHp(x)
             localStorage.setItem("hp", JSON.stringify(x))
             if (hp >= Number(card.text.split(";")[1])) {

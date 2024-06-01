@@ -146,7 +146,7 @@
     {
         "index": 6,
         "cid": 3,
-        "text": ";30;Your first challenger is the mighty swordsmen of Aeros.;1;2",
+        "text": ";30;Your first challenger is the mighty swordsmen of Aeros.;1;2;0",
         "choices":["Sword","Bow"],
         "Sword": {
             "coins": 0,
@@ -170,7 +170,7 @@
     {
         "index": 7,
         "cid": 4,
-        "text": ";30;Your next challenger is the sharp archer of Aeros.;2;1",
+        "text": ";30;Your next challenger is the sharp archer of Aeros.;2;1;0",
         "choices":["Attack","Defend"],
         "Attack": {
             "coins": 0,
@@ -320,7 +320,7 @@
     {
         "index": 14,
         "cid": 6,
-        "text": ";100;The swift rider rushes towards you he is extremly fast.;2;2",
+        "text": ";100;The swift rider rushes towards you he is extremly fast.;2;2;0",
         "choices":["Sword","Bow"],
         "Sword": {
             "coins": 0,
