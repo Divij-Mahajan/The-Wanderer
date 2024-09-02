@@ -1,6 +1,8 @@
 # The Wanderer
 
 Website: https://wanderer-seven.vercel.app/
+
+
 Presentation: https://www.canva.com/design/DAGGzg_Ti8k/poIcIUh9BIBeS9WKNeZ43Q/view?utm_content=DAGGzg_Ti8k&utm_campaign=designshare&utm_medium=link&utm_source=editor#1
 
 Wanderer is not just an ordinary game. It features a captivating storyline spanning three towns: Flare Town, Aeors, and Storm Gate, each populated with unique characters. Built on the Sui blockchain, it immerses players in a world of decisions and trading offering an engaging and novel way to interact with the platform.
